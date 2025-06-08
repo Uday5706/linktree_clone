@@ -16,7 +16,7 @@ const Generate = () => {
     const [handle, setHandle] = useState(Handle || "")
     const [pic, setPic] = useState("")
 
-    const submitLinks = async (links, handle, pic) => {
+    const submitLinks = async (links, handle, pic,desc) => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -34,7 +34,7 @@ const Generate = () => {
             redirect: "follow"
         };
 
-        const r = await fetch(`${NEXT_PUBLIC_HOST}/api/add`, requestOptions)
+        const r = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/add`, requestOptions)
         const result = await r.json()
         if (result.success) {
             toast(result.message)
@@ -108,7 +108,7 @@ const Generate = () => {
                     <div className="flex gap-4  w-full pl-14">
                         <input type='text' value={pic || ""} onChange={(e) => { setPic(e.target.value) }} className='bg-white overflow-y-auto smooth w-[70%] p-4 focus:outline-blue-600 rounded-full' placeholder='Enter Link to your Picture' />
                         <div className=' relative flex justify-center items-center bg-[#dbf327] animate h-full w-[200px] rounded-full overflow-hidden' >
-                            <button disabled={pic == "" || handle == "" || links[0].link=="" && links[0].linktext==""} onClick={(e) => { submitLinks(links, handle, pic) }} className='text-black font-medium h-full w-[200px] rounded-full z-1 disabled:bg-slate-200'>Create BitLink</button>
+                            <button disabled={pic == "" || handle == "" || links[0].link=="" && links[0].linktext==""} onClick={(e) => { submitLinks(links, handle, pic,desc) }} className='text-black font-medium h-full w-[200px] rounded-full z-1 disabled:bg-slate-200'>Create BitLink</button>
                         </div>
                     </div>
                 </div>
