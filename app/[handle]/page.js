@@ -47,7 +47,7 @@ const HandlePage = async ({ params }) => {
         {/* Links List */}
         <div className="flex flex-col mt-8 items-center gap-2 w-[40%]">
           {Links.map((item, index) => (
-            <div key={index} className="text-left bg-white/80 p-5 flex hover:scale-[1.05] transition-transform duration-300 justify-center w-full rounded-md">
+            <div key={index} className="text-left overflow-x-auto smooth bg-white/80 p-5 flex hover:scale-[1.05] transition-transform duration-300 justify-center w-full rounded-md">
               <span className="font-medium">{item.linktext}: <a
                 href={item.link}
                 target="_blank"
